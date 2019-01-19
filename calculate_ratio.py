@@ -56,18 +56,20 @@ class calculate_ratio:
                     total = int(skindataSet[i][j][k] + nonskindataSet[i][j][k])
                     s = float(skindataSet[i][j][k])
                     ns = float(nonskindataSet[i][j][k])
-                    if ns == 0.0 and s!=0.0:
+                    if ns == 0.0 :
+                        if s==0.0:
+                            ratio[i][j][k] = 0.0
 
-                        ratio[i][j][k] = 1.0
+                        else:
 
-                    elif ns==0.0 and s==0.0:
-                        ratio[i][j][k] = 0.0
+                            ratio[i][j][k] = 1.0
+
                     else:
 
                         # print("S "+ str(skindataSet[i][j][k]))
                         ratio[i][j][k] = float(s / ns)
                     string = str(i) + "," + str(j) + "," + str(k) + "," + str(ratio[i][j][k]) + "\n"
-                    with open("ratio.txt", 'a') as fil:
+                    with open("ratio2.txt", 'a') as fil:
                         fil.write(string)
 
                     # print(total)
